@@ -1,25 +1,43 @@
 # Klinik Kurnia - Sistem Informasi Pendaftaran Pasien
 
-## Nama : Dedi Kurniawan
-## NIM : H1H024022
-## Mata Kuliah : Pemrograman Web
+## Identitas Mahasiswa
+* **Nama:** Dedi Kurniawan
+* **NIM:** H1H024022
+* **Mata Kuliah:** Pemrograman Web
+* **Nomor Paket:** Paket 3
 
-Aplikasi web berbasis MVC menggunakan CodeIgniter 3 dan Bootstrap 5, dikhususkan untuk sistem pendaftaran mandiri pasien di Klinik Kurnia. Desain antarmuka difokuskan pada fungsionalitas, responsivitas, dan kemudahan pengguna dengan pemisahan akses yang jelas antara area publik (*landing page*) dan area privat (*dashboard* pasien).
+---
 
-## Fitur Utama
-- **Area Publik:** *Landing page* informatif yang menampilkan profil klinik, layanan, dan jadwal praktik dokter harian.
-- **Autentikasi Pasien:** Sistem Login dan Registrasi yang praktis menggunakan Nomor Handphone (menyimpan data NIK, Nama, dan Alamat).
-- **Dashboard Pasien:** Area privat yang memuat informasi statistik pendaftaran, daftar tiket/antrean aktif, serta riwayat kunjungan selesai.
-- **Pendaftaran Mandiri:** Form pendaftaran interaktif yang mencakup pemilihan jadwal dokter, input keluhan penyakit, serta opsi metode pembayaran (Umum / BPJS / Asuransi).
-- **E-Tiket & Kode Booking:** Pencetakan tiket digital otomatis (*print ready*) yang menampilkan detail hari, jam, poli tujuan, nama dokter, dan kode booking unik.
-- **Sistem Keamanan & Routing:** Navigasi ketat menggunakan sistem Controller (`base_url`), terkonfigurasi dengan `.htaccess` untuk URL *friendly* (tanpa `index.php`).
+## Deskripsi Singkat Aplikasi
+**Klinik Kurnia** adalah aplikasi sistem informasi pendaftaran antrean fasilitas kesehatan berbasis *web*. Dibangun menggunakan pola arsitektur **MVC** (Model-View-Controller) dengan *framework* **CodeIgniter 3** dan antarmuka responsif dari **Bootstrap 5**. Aplikasi ini dirancang dengan gaya visual modern, bersih, dan terang.
 
-## Instalasi & Konfigurasi (XAMPP/Laragon)
-1. Pindahkan folder proyek ke `htdocs` (XAMPP) atau `www` (Laragon). Pastikan nama folder proyek adalah `klinik_kurnia`.
-2. Buat database baru di MySQL (via phpMyAdmin) dengan nama `db_klinik_kurnia`.
-3. Import file `db_klinik_kurnia.sql` ke dalam database tersebut.
-4. Buka file konfigurasi `application/config/database.php` dan sesuaikan kredensial berikut:
-```php
-   'username' => 'root',
-   'password' => '',
+Fitur utama dalam aplikasi ini dibagi menjadi dua hak akses:
+1. **Sisi Pasien:** Memungkinkan pengguna untuk melakukan registrasi akun, *login*, memilih jadwal dan dokter spesialis secara dinamis (menggunakan fitur *dependent dropdown*), hingga mencetak e-tiket antrean kunjungan secara langsung.
+2. **Sisi Admin:** Dilengkapi dengan *Control Panel* untuk mengelola data master menggunakan operasi CRUD (Poli dan Dokter) yang terintegrasi dalam *Bootstrap Tabs* & *Modals*, serta fitur konfirmasi penyelesaian antrean pasien.
+
+---
+
+## Langkah Instalasi
+Berikut adalah panduan untuk menjalankan aplikasi ini di peladen lokal (XAMPP/Laragon):
+
+1. **Persiapan Direktori:** Unduh atau *clone* repositori ini, lalu ekstrak folder proyek ke dalam direktori lokal Anda (misal: `C:\xampp\htdocs\klinik_kurnia`).
+2. **Setup Database:**
+   * Buka phpMyAdmin (biasanya di `http://localhost/phpmyadmin`).
+   * Buat *database* baru dengan nama `db_klinik_kurnia`.
+   * Lakukan *import* pada file `database.sql` yang sudah disediakan di dalam folder utama proyek ini.
+3. **Konfigurasi Database:** Buka file `application/config/database.php` dan pastikan kredensialnya sesuai dengan server lokal Anda:
+   ```php
+   'hostname' => 'localhost',
+   'username' => 'root', 
+   'password' => '',     
    'database' => 'db_klinik_kurnia',
+4. **Jalankan Aplikasi:** Buka browser dan akses URL http://localhost/klinik_kurnia
+
+## Screenshot Tampilan
+- Halaman Landing / Beranda:
+
+- Dashboard Pasien & Form Pendaftaran:
+
+- Dashboard Admin (Control Panel & CRUD):
+
+## Link Video YouTube

@@ -21,50 +21,55 @@
 
 <nav class="navbar navbar-expand-lg mb-4">
     <div class="container">
-        <!-- Logo Klinik -->
         <a class="navbar-brand" href="<?= base_url() ?>">
             <i class="bi bi-hospital"></i> Klinik Kurnia
         </a>
         
-        <!-- Tombol Toggler untuk mode Mobile (HP) -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
         
-        <!-- Menu Kanan -->
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav align-items-center">
                 
-                <!-- Pengecekan: Jika Pasien Sudah Login -->
-                <?php if($this->session->userdata('id_pasien')): ?>
-                    
-                    <!-- Link ke Dashboard -->
+                <?php if($this->session->userdata('id_admin')): ?>
+                    <li class="nav-item me-3 mb-2 mb-lg-0">
+                        <a href="<?= base_url('admin') ?>" class="nav-link text-dark fw-semibold">Dashboard Admin</a>
+                    </li>
+                    <li class="nav-item me-3 mb-2 mb-lg-0 d-flex align-items-center">
+                        <span class="text-primary fw-bold">
+                            <i class="bi bi-person-badge-fill me-1"></i> <?= $this->session->userdata('nama_admin') ?>
+                        </span>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?= base_url('admin/logout') ?>" class="btn btn-outline-danger btn-sm" style="border-radius: 10px; font-weight: 600;">
+                            <i class="bi bi-box-arrow-right"></i> Logout
+                        </a>
+                    </li>
+
+                <?php elseif($this->session->userdata('id_pasien')): ?>
                     <li class="nav-item me-3 mb-2 mb-lg-0">
                         <a href="<?= base_url('pasien') ?>" class="nav-link text-dark fw-semibold">Dashboard</a>
                     </li>
 
-                    <!-- Tombol Pendaftaran Baru -->
                     <li class="nav-item me-4 mb-2 mb-lg-0">
                         <a href="<?= base_url('pasien/pendaftaran_baru') ?>" class="btn btn-primary btn-sm" style="border-radius: 10px; font-weight: 600;">
                             <i class="bi bi-calendar-plus me-1"></i> Pendaftaran
                         </a>
                     </li>
                     
-                    <!-- Nama Pasien -->
                     <li class="nav-item me-3 mb-2 mb-lg-0 d-flex align-items-center">
                         <span class="text-secondary fw-bold">
                             <i class="bi bi-person-circle me-1"></i> Halo, <?= $this->session->userdata('nama_pasien') ?>
                         </span>
                     </li>
                     
-                    <!-- Tombol Logout -->
                     <li class="nav-item">
                         <a href="<?= base_url('auth/logout') ?>" class="btn btn-outline-danger btn-sm" style="border-radius: 10px; font-weight: 600;">
                             <i class="bi bi-box-arrow-right"></i> Logout
                         </a>
                     </li>
                 
-                <!-- Pengecekan: Jika Belum Login -->
                 <?php else: ?>
                     <li class="nav-item me-2 mb-2 mb-lg-0">
                         <a href="<?= base_url('auth') ?>" class="btn btn-outline-primary btn-sm" style="border-radius: 10px; font-weight: 600;">Login</a>
@@ -79,5 +84,4 @@
     </div>
 </nav>
 
-<!-- Container utama untuk konten halaman (ditutup nanti di footer) -->
 <div class="container">

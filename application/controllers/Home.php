@@ -3,14 +3,13 @@
 class Home extends CI_Controller {
     
     public function index() {
-        // Memuat model untuk menarik data dari database
-        $this->load->model('Klinik_model');
+        // Query untuk mengambil nama dokter, foto, jadwal, dan nama poli
+        $this->db->select('dokter.nama_dokter, dokter.foto_dokter, dokter.jadwal, poli.nama_poli');
+        $this->db->from('dokter');
+        $this->db->join('poli', 'poli.id = dokter.id_poli'); // Disesuaikan: poli.id
         
-        // Mengambil data jadwal dokter beserta nama poli dan nama dokter
-        // untuk ditampilkan di Landing Page publik
-        $data['jadwal'] = $this->Klinik_model->get_jadwal_lengkap();
-        
-        // Memuat tampilan dengan tema hitam solid (header, konten landing, footer)
+        $data['data_dokter'] = $this->db->get()->result_array();
+
         $this->load->view('layout/header');
         $this->load->view('home/landing', $data);
         $this->load->view('layout/footer');

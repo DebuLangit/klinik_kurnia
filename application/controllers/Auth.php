@@ -21,8 +21,8 @@ class Auth extends CI_Controller {
             $pasien = $this->Klinik_model->get_pasien($this->input->post('no_hp'));
             if($pasien && password_verify($this->input->post('password'), $pasien['password'])) {
                 $this->session->set_userdata([
-                    'id_pasien' => $pasien['id_pasien'], 
-                    'nama_pasien' => $pasien['nama_pasien']
+                    'id_pasien' => $pasien['id'],
+                    'nama_pasien' => $pasien['nama']
                 ]);
                 redirect('pasien');
             } else {
@@ -33,11 +33,26 @@ class Auth extends CI_Controller {
     }
 
     public function register() {
-        $this->form_validation->set_rules('nik', 'NIK', 'required|is_unique[pasien.nik]|exact_length[16]');
-        $this->form_validation->set_rules('nama_pasien', 'Nama Lengkap', 'required|trim');
-        $this->form_validation->set_rules('no_hp', 'Nomor HP', 'required|trim|is_unique[pasien.no_hp]');
-        $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[4]');
-        $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
+        // Menambahkan Custom Error Message Bahasa Indonesia
+        $this->form_validation->set_rules('nik', 'NIK', 'required|is_unique[pasien.nik]|exact_length[16]', [
+            'required' => '%s wajib diisi!',
+            'is_unique' => '%s ini sudah terdaftar!',
+            'exact_length' => '%s harus tepat 16 digit!'
+        ]);
+        $this->form_validation->set_rules('nama_pasien', 'Nama Lengkap', 'required|trim', [
+            'required' => '%s wajib diisi!'
+        ]);
+        $this->form_validation->set_rules('no_hp', 'Nomor HP', 'required|trim|is_unique[pasien.no_hp]', [
+            'required' => '%s wajib diisi!',
+            'is_unique' => '%s ini sudah terdaftar!'
+        ]);
+        $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[4]', [
+            'required' => '%s wajib diisi!',
+            'min_length' => '%s minimal 4 karakter!'
+        ]);
+        $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim', [
+            'required' => '%s wajib diisi!'
+        ]);
 
         if($this->form_validation->run() == FALSE) {
             $this->load->view('layout/header');
@@ -46,7 +61,7 @@ class Auth extends CI_Controller {
         } else {
             $data = [
                 'nik' => $this->input->post('nik'),
-                'nama_pasien' => $this->input->post('nama_pasien'),
+                'nama' => $this->input->post('nama_pasien'), 
                 'no_hp' => $this->input->post('no_hp'),
                 'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
                 'alamat' => $this->input->post('alamat')

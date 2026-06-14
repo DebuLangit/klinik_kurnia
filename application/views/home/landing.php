@@ -40,7 +40,36 @@
 </div>
 
 <h2 class='mb-3'>Dokter Kami</h2>
-<div class='card p-4 mb-4'>Dokter Umum • Dokter Anak • Dokter Gigi</div>
+<div class="row g-4 mb-4">
+    <?php if(!empty($data_dokter)): ?>
+        <?php foreach($data_dokter as $d): ?>
+        <div class="col-md-3 col-sm-6">
+            <div class="card h-100 text-center shadow-sm border-0">
+                <!-- Cek apakah dokter punya foto -->
+                <?php if(!empty($d['foto_dokter'])): ?>
+                    <img src="<?= base_url('assets/img/dokter/' . $d['foto_dokter']) ?>" class="card-img-top" alt="<?= $d['nama_dokter'] ?>" style="object-fit: cover; height: 300px;">
+                <?php else: ?>
+                    <!-- Jika tidak ada foto, tampilkan ikon default -->
+                    <div class="bg-light d-flex justify-content-center align-items-center rounded-top" style="height: 200px;">
+                        <i class="bi bi-person-fill text-secondary" style="font-size: 5rem;"></i>
+                    </div>
+                <?php endif; ?>
+                
+                <div class="card-body">
+                    <h5 class="card-title fw-bold mb-1"><?= $d['nama_dokter'] ?></h5>
+                    <span class="badge bg-primary bg-opacity-10 text-primary border border-primary"><?= $d['nama_poli'] ?></span>
+                </div>
+            </div>
+        </div>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <div class="col-12">
+            <div class="alert alert-light border text-center text-muted">
+                Belum ada data dokter yang tersedia saat ini.
+            </div>
+        </div>
+    <?php endif; ?>
+</div>
 
 <h2 class='mb-3'>Testimoni</h2>
 <div class='card p-4 mb-4'>"Pelayanan cepat dan ramah." ⭐⭐⭐⭐⭐</div>
