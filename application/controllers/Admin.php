@@ -22,6 +22,7 @@ class Admin extends CI_Controller {
     echo "<p>Password admin telah diperbarui secara otomatis.</p>";
     echo "<a href='".base_url('admin/login')."' style='padding: 10px 20px; background: #0D6EFD; color: #fff; text-decoration: none; border-radius: 5px;'>Kembali Login</a>";
     echo "</div>";
+    }
 
     // --- AUTENTIKASI ---
     public function login() {
