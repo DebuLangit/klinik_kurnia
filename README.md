@@ -55,9 +55,16 @@ Berikut adalah panduan untuk menjalankan aplikasi ini di peladen lokal (XAMPP/La
 
 ## Screenshot Tampilan
 - Halaman Landing / Beranda:
+  <img width="1351" height="617" alt="image" src="https://github.com/user-attachments/assets/5135b68b-97d1-4ac8-a231-8a41b27825bb" />
 
 - Dashboard Pasien & Form Pendaftaran:
+  <img width="1222" height="613" alt="image" src="https://github.com/user-attachments/assets/2771ca2c-f783-49e5-8474-08854204ee37" />
+
+	<img width="774" height="567" alt="image" src="https://github.com/user-attachments/assets/8c3ee535-25d0-4729-8231-bad08dd76d69" />
 
 - Dashboard Admin (Control Panel & CRUD):
+  <img width="1242" height="615" alt="image" src="https://github.com/user-attachments/assets/4d33decf-b4c7-473e-adda-1e671d08e525" />
+	
 
 ## Link Video YouTube
+https://youtu.be/Y6ZcLFOfnq4
