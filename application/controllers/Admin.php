@@ -8,20 +8,20 @@ class Admin extends CI_Controller {
         $this->load->library('form_validation');
     }
 
-    //public function setup_admin() {
+    public function setup_admin() {
     // 1. Memerintahkan PHP membuat hash yang 100% valid untuk kata 'admin123'
-    //$password_asli = password_hash('admin123', PASSWORD_DEFAULT);
+    $password_asli = password_hash('admin123', PASSWORD_DEFAULT);
     
     // 2. Menimpa password dummy di database dengan hash yang baru menggunakan Query Builder
-    //$this->db->where('username', 'admin');
-    //$this->db->update('admin', ['password' => $password_asli]);
+    $this->db->where('username', 'admin');
+    $this->db->update('admin', ['password' => $password_asli]);
     
     // 3. Menampilkan konfirmasi
-    //echo "<div style='font-family: sans-serif; text-align: center; margin-top: 50px;'>";
-    //echo "<h3>Setup Hash Berhasil!</h3>";
-    //echo "<p>Password admin telah diperbarui secara otomatis.</p>";
-    //echo "<a href='".base_url('admin/login')."' style='padding: 10px 20px; background: #0D6EFD; color: #fff; text-decoration: none; border-radius: 5px;'>Kembali Login</a>";
-    //echo "</div>";
+    echo "<div style='font-family: sans-serif; text-align: center; margin-top: 50px;'>";
+    echo "<h3>Setup Hash Berhasil!</h3>";
+    echo "<p>Password admin telah diperbarui secara otomatis.</p>";
+    echo "<a href='".base_url('admin/login')."' style='padding: 10px 20px; background: #0D6EFD; color: #fff; text-decoration: none; border-radius: 5px;'>Kembali Login</a>";
+    echo "</div>";
 
     // --- AUTENTIKASI ---
     public function login() {
